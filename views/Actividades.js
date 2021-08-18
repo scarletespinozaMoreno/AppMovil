@@ -64,7 +64,7 @@ const Actividades = () => {
                 <List>
                     {actividad.map((actividades, i) => {
                         //console.log(habitacion)
-                        const { Capacidad,Descripcion,Duracion,Hora,Imagen,Titulo,fechaInicio } = actividades;
+                        const { Capacidad,Descripcion,Duracion,Hora,Imagen,Titulo,fechaInicio } = actividadess;
                         return (
                             <Fragment >
                                 {mostrarHeading(Duracion, i)}
