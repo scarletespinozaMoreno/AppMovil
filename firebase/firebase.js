@@ -4,7 +4,7 @@ import 'firebase/firestore'
 import 'firebase/auth'
  
 import firebaseConfig from './config';
- 
+ //configuracion para firebase
 class Firebase {
   constructor() {
     if (!app.apps.length) {

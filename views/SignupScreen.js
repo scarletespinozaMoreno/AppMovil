@@ -1,3 +1,4 @@
+//PANTALLA EN LA CUAL CREO UN USUARIO(rEGISTRO)
 import React, {useContext, useState} from 'react';
 import {
   View,

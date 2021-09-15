@@ -1,3 +1,4 @@
+//CEREBRO DE LA LOGICA, ESTA PANTALLA ES EN LA CUAL METO LAS DEMAS PANTALLAS PARA QUE SEAN VISIBLES AL USUARIO
 import React from 'react';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack'

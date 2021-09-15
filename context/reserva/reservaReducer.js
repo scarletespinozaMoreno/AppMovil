@@ -6,7 +6,7 @@ import {
     PEDIDO_ORDENADO
 } from '../../types'
 
-
+//reducer para las reservas en el cual tengo los metodos para mis reservas
 export default (state,action)=>{
     switch(action.type) {
         case SELECCIONAR_PRODUCTO:

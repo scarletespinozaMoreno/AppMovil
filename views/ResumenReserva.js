@@ -1,3 +1,4 @@
+//PANTALLA PARA VER EL RESUMEN DE MI RESERVA(ANTES DE CONFIRMAR LA RESERVA)
 import React, { useContext, useEffect, useState } from 'react';
 import { Alert, StyleSheet, View,TouchableOpacity } from 'react-native';
 import ReservaContext from '../context/reserva/reservaContext'
@@ -240,47 +241,7 @@ const ResumenReserva = () => {
                                 </Body>
 
                             </ListItem>
-                            <H2>Elija su metodo de pago</H2>
-                            <Picker
-                                    
-                                    selectedValue={metodoPago}
-                                    onValueChange={(itemValue, itemIndex) =>
-                                        setMetodoPago(itemValue)
-                                    }>
-                                    <Picker.Item label="Efectivo" value="efectivo" />
-                                    <Picker.Item label="Tarjeta De Credito" value="tCredito" />
-                                    <Picker.Item label="Tarjeta De Debito" value="tDebito" />
-                                </Picker>
-                            <H2>Elija su llegada y salida</H2>
-                            <ListItem>
-                                <View style={styles.container}>
-                                    <Text style={{color:'black', fontSize:12}}>Dia de llegada: {diaLlegadaString}</Text>
-                                    <TouchableOpacity style={styles.button} onPress={showDatePicker}>
-                                        <Text style={styles.text}>Llegada</Text>
-                                    </TouchableOpacity>
-                                    <DateTimePickerModal
-                                    isVisible={isDatePickerVisible}
-                                    mode="date"
-                                    onConfirm={handleConfirm}
-                                    onCancel={hideDatePicker}
-                                    />
-                                </View>
-                            </ListItem>
-
-                            <ListItem>
-                                <View style={styles.container}>
-                                    <Text style={{color:'black', fontSize:12}}>Dia de salida: {diaSalidaString}</Text>
-                                    <TouchableOpacity style={styles.button} onPress={showDatePickerSalida}>
-                                        <Text style={styles.text}>Salida</Text>
-                                    </TouchableOpacity>
-                                    <DateTimePickerModal
-                                    isVisible={isDatePickerVisibleSalida}
-                                    mode="date"
-                                    onConfirm={handleConfirmSalida}
-                                    onCancel={hideDatePickerSalida}
-                                    />
-                                </View>
-                            </ListItem>
+                           
                         </List>
                     )
                 })}

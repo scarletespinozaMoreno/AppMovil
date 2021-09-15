@@ -1,3 +1,4 @@
+//PANTALLA DE MENU PRINCIPAL
 import React from 'react';
 import { Button, Text, View,StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'

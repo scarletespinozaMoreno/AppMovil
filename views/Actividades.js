@@ -1,3 +1,4 @@
+//PANTALLA EN LA CUAL OBTENGO TODAS LAS ACTVIIDADES DE LA HOSTERIA
 import React, { useContext, useEffect, Fragment } from 'react';
 import { StyleSheet } from 'react-native';
 import FirebaseContext from '../context/firebase/firebaseContext'
@@ -15,6 +16,7 @@ import {
 
 import globalStyles from '../styles/global'
 //import _ from 'lodash'
+
 
 const Actividades = () => {
     //context Firebase

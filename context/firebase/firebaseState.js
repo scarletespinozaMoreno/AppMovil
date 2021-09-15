@@ -10,6 +10,8 @@ import { OBTENER_PRODUCTOS_EXITO } from '../../types'
 import { OBTENER_PROMOCIONES_EXITO } from '../../types'
 import { OBTENER_ACTIVIDADES_EXITO } from '../../types'
 
+//state en el cual programo los metodos para firebase
+
 const FirebaseState = props => {
     
     //crear state inicial

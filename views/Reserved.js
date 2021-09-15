@@ -1,4 +1,4 @@
-
+//PANTALLA PARA VER LAS RESERVAS ANTERIORES
 import React from 'react';
 import { Image } from 'react-native';
 import { withRouter } from 'react-router-dom';
