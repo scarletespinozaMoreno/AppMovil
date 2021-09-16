@@ -1,9 +1,9 @@
 //PANTALLA PREVIA A LA RESERVA
-import React, { useState,useContext,useEffect } from 'react';
-import { Alert, StyleSheet,View,TouchableOpacity } from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { Alert, StyleSheet, View, TouchableOpacity } from 'react-native';
 import ReservaContext from '../context/reserva/reservaContext'
 import {
-    Container,List,ListItem,Thumbnail,Footer,FooterTab, Content, Input, Grid, Col, Form, Icon, Button, Body, Text, H1, Card, CardItem,H2
+    Container, List, SimpleGrid, ListItem, Thumbnail,Box, Footer, FooterTab, Content, Input, Grid, Col, Form, Icon, Button, Body, Text, H1, Card, CardItem, H2
 } from 'native-base'
 import globalStyles from '../styles/global'
 import { useNavigation } from '@react-navigation/native'
@@ -19,12 +19,12 @@ const FormularioReserva = () => {
 
     //state para cantidades
     const [cantidad, guardarCantidad] = useState(1)
-    const [total,guardarTotal]= useState('0')
+    const [total, guardarTotal] = useState('0')
 
     //context
 
     const { user, logout } = useContext(AuthContext);
-    const { habitaciones,pedidoRealizado,reserva} = useContext(ReservaContext);
+    const { habitaciones, pedidoRealizado, reserva } = useContext(ReservaContext);
     const { nombre, imagen, descripcion, precio, categoria, existencia } = habitaciones;
     const [userData, setUserData] = useState(null);
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -33,11 +33,11 @@ const FormularioReserva = () => {
     //const [dateOut, setDateOut] = useState(null);
     const options = ['Efectivo', 'Tarjete de credito', 'Tarjeta de debito']
     const [metodoPago, setMetodoPago] = useState();
-    const [diaLlegada,setDiaLlegada] = useState(null)
-    const [diaSalida,setDiaSalida] = useState(null)
-    const[diaLlegadaString,setDiaLlegadaString]=useState(null)
-    const[diaSalidaString,setDiaSalidaString]=useState(null)
-  
+    const [diaLlegada, setDiaLlegada] = useState(null)
+    const [diaSalida, setDiaSalida] = useState(null)
+    const [diaLlegadaString, setDiaLlegadaString] = useState(null)
+    const [diaSalidaString, setDiaSalidaString] = useState(null)
+
     //redireccionar
     const navigation = useNavigation();
 
@@ -49,7 +49,7 @@ const FormularioReserva = () => {
 
     const hideDatePickerSalida = () => {
         setDatePickerVisibilitySalida(false);
-        
+
     };
 
     const showDatePicker = () => {
@@ -58,21 +58,21 @@ const FormularioReserva = () => {
 
     const hideDatePicker = () => {
         setDatePickerVisibility(false);
-        
+
     };
 
 
     const handleConfirm = (date) => {
         setDatePickerVisibility(false);
         setDiaLlegada(moment(date).toDate());
-        setDiaLlegadaString(moment(date).format('MMMM, do YYY HH:mm'));
-        
+        setDiaLlegadaString(moment(date).format('DD-MM-YYYY'));
+
     };
     const handleConfirmSalida = (date) => {
         setDatePickerVisibilitySalida(false);
         setDiaSalida(moment(date).toDate());
-        setDiaSalidaString(moment(date).format('MMMM, do YYY HH:mm'));
-        
+        setDiaSalidaString(moment(date).format('DD-MM-YYYY'));
+
     };
 
     //confirmar si la reserva es correcta
@@ -106,13 +106,13 @@ const FormularioReserva = () => {
     */
 
     //en cuanto el componente carga, calcular la cantidad a pagar
-    useEffect(()=>{
+    useEffect(() => {
         calcularTotal();
         getUser();
-    },[cantidad]);
+    }, [cantidad]);
 
     //calcula el valor de la reserva
-    const calcularTotal = ()=> {
+    const calcularTotal = () => {
         const totalPagar = precio * cantidad
         guardarTotal(totalPagar);
     }
@@ -164,7 +164,7 @@ const FormularioReserva = () => {
                 precio: precio,
                 startDate: diaLlegada,
                 total: total,
-                metodoPago:metodoPago
+                metodoPago: metodoPago
 
 
 
@@ -183,100 +183,105 @@ const FormularioReserva = () => {
         <Container>
             <Content>
 
-            <Text style={globalStyles.titulo}>Elija su metodo de pago</Text>
-                            <Picker
-                                    
-                                    selectedValue={metodoPago}
-                                    onValueChange={(itemValue, itemIndex) =>
-                                        setMetodoPago(itemValue)
-                                    }>
-                                    <Picker.Item label="Efectivo" value="efectivo" />
-                                    <Picker.Item label="Tarjeta De Credito" value="tCredito" />
-                                    <Picker.Item label="Tarjeta De Debito" value="tDebito" />
-                                </Picker>
-                                <Text style={globalStyles.titulo}>Elija su llegada y salida</Text>
-                            <ListItem>
-                                <View style={styles.container}>
-                                    <Text style={{color:'black', fontSize:12}}>Dia de llegada: {diaLlegadaString}</Text>
-                                    <TouchableOpacity style={styles.button} onPress={showDatePicker}>
-                                        <Text style={styles.text}>Llegada</Text>
-                                    </TouchableOpacity>
-                                    <DateTimePickerModal
-                                    isVisible={isDatePickerVisible}
-                                    mode="date"
-                                    onConfirm={handleConfirm}
-                                    onCancel={hideDatePicker}
-                                    />
-                                </View>
-                            </ListItem>
+                <Text style={globalStyles.titulo}>Elija su metodo de pago</Text>
+                <Picker
 
-                            <ListItem>
-                                <View style={styles.container}>
-                                    <Text style={{color:'black', fontSize:12}}>Dia de salida: {diaSalidaString}</Text>
-                                    <TouchableOpacity style={styles.button} onPress={showDatePickerSalida}>
-                                        <Text style={styles.text}>Salida</Text>
-                                    </TouchableOpacity>
-                                    <DateTimePickerModal
-                                    isVisible={isDatePickerVisibleSalida}
-                                    mode="date"
-                                    onConfirm={handleConfirmSalida}
-                                    onCancel={hideDatePickerSalida}
-                                    />
-                                </View>
-                            </ListItem>
+                    selectedValue={metodoPago}
+                    onValueChange={(itemValue, itemIndex) =>
+                        setMetodoPago(itemValue)
+                    }>
+                    <Picker.Item label="Efectivo" value="efectivo" />
+                    <Picker.Item label="Tarjeta De Credito" value="tCredito" />
+                    <Picker.Item label="Tarjeta De Debito" value="tDebito" />
+                </Picker>
+                <Text style={globalStyles.titulo}>Elija su llegada y salida</Text>
+                <ListItem>
+                    <View style={styles.container}>
+                        <Text style={{ color: 'black', fontSize: 12 }}>Dia de llegada: {diaLlegadaString}</Text>
+                        <TouchableOpacity style={styles.button} onPress={showDatePicker}>
+                            <Text style={styles.text}>Llegada</Text>
+                        </TouchableOpacity>
+                        <DateTimePickerModal
+                            isVisible={isDatePickerVisible}
+                            mode="date"
+                            onConfirm={handleConfirm}
+                            onCancel={hideDatePicker}
+                        />
+                    </View>
+                </ListItem>
 
-                <Form>
-                    <Text style={globalStyles.titulo}>Numero de Personas</Text>
-                    <Grid>
-                        <Col>
-                            <Button
-                                
-                                props
-                                style={{ height: 60, alignContent: 'center',backgroundColor:"#1a6199" }}
-                                onPress={() => decrementarUno()}
-                            >
+                <ListItem>
+                    <View style={styles.container}>
+                        <Text style={{ color: 'black', fontSize: 12 }}>Dia de salida: {diaSalidaString}</Text>
+                        <TouchableOpacity style={styles.button} onPress={showDatePickerSalida}>
+                            <Text style={styles.text}>Salida</Text>
+                        </TouchableOpacity>
+                        <DateTimePickerModal
+                            isVisible={isDatePickerVisibleSalida}
+                            mode="date"
+                            onConfirm={handleConfirmSalida}
+                            onCancel={hideDatePickerSalida}
+                        />
+                    </View>
+                </ListItem>
 
-                                <Icon
-                                    style={{ fontSize: 40 }}
-                                    name="remove" />
-                            </Button>
-                        </Col>
-                        <Col>
-                            <Input
-                                style={{ textAlign: 'center', fontSize: 20 }}
-                                value={cantidad.toString()}
-                                keyboardType="numeric"
-                                onChangeText={cantidad => guardarCantidad(cantidad)}
-                            />
 
-                        </Col>
+                <Text style={globalStyles.titulo}>Numero de Personas</Text>
+                <Content contentContainerStyle={{flex: 1}} style={{padding: 80}}>
+                <Grid style={{alignItems: 'center'}}>
+                    
+                    
+                    <Col>
+                        <Button
 
-                        <Col>
-                            <Button
-                                color="#1a6199"
-                                props
-                                style={{ height: 60, alignContent: 'center',backgroundColor:"#1a6199" }}
-                                onPress={() => incrementarUno()}
-                            >
-                                <Icon
-                                    style={{ fontSize: 40 }}
-                                    name="add" />
-                            </Button>
-                        </Col>
-                    </Grid>
-                    <Text
+                            props
+                            style={{ height: 60, alignContent: 'center', backgroundColor: "#1a6199" }}
+                            onPress={() => decrementarUno()}
+                        >
+
+                            <Icon
+                                style={{ fontSize: 40 }}
+                                name="remove" />
+                        </Button>
+                    </Col>
+                    <Col>
+                        <Input
+                            style={{ textAlign: 'center', fontSize: 20 }}
+                            value={cantidad.toString()}
+                            keyboardType="numeric"
+                            onChangeText={cantidad => guardarCantidad(cantidad)}
+                        />
+
+                    </Col>
+
+                    <Col>
+                        <Button
+                            color="#1a6199"
+                            props
+                            style={{ height: 60, alignContent: 'center', backgroundColor: "#1a6199" }}
+                            onPress={() => incrementarUno()}
+                        >
+                            <Icon
+                                style={{ fontSize: 40 }}
+                                name="add" />
+                        </Button>
+                    </Col>
+                    
+                </Grid>
+                </Content>
+                <Text
                     style={globalStyles.cantidad}>
-                        Subtotal: ${total}
-                    </Text>
-                </Form>
+                    Subtotal: ${total}
+                </Text>
+
             </Content>
             <Footer>
                 <FooterTab>
-                    <Button 
-                    style={globalStyles.boton}
-                    onPress={()=> handleUpdate()}
+                    <Button
+                        style={globalStyles.boton}
+                        onPress={() => handleUpdate()}
                     >
-                        <Text style = {globalStyles.botonTexto}>Hacer la reserva</Text>
+                        <Text style={globalStyles.botonTexto}>Hacer la reserva</Text>
                     </Button>
                 </FooterTab>
             </Footer>
@@ -284,26 +289,30 @@ const FormularioReserva = () => {
     );
 };
 
-const styles=StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:"#ffffff"
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: "#ffffff"
     },
-    button:{
-        width:250,
-        height:50,
-        backgroundColor:"#1a6199",
-        borderRadius:30,
-        justifyContent:'center',
-        marginTop:15
+    button: {
+        width: 250,
+        height: 50,
+        backgroundColor: "#1a6199",
+        borderRadius: 30,
+        justifyContent: 'center',
+        marginTop: 15
 
     },
-    text:{
-        fontSize:18,
-        color:'white',
-        textAlign:'center'
+    text: {
+        fontSize: 18,
+        color: 'white',
+        textAlign: 'center'
+    },
+    contentContainer: {
+        flex: 1,
+        justifyContent: 'center'
     }
 })
 

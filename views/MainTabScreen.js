@@ -113,7 +113,7 @@ const ProfileStackScreen = ({ navigation }) => (
         }}
     >
         <ProfileStack.Screen
-            name="Profile"
+            name="Perfil"
             component={ProfileScreen}
             options={{
 
