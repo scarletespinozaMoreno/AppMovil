@@ -31,7 +31,7 @@ const ReservaDisplay = ({ habitacion }) => {
 
                     <Text style={globalStyles.textp} >Desde: {desde}</Text>
                     <Text style={globalStyles.textp}>Hasta: {hasta}</Text>
-                    <Text style={globalStyles.textp}>Precio pagado: {habitacion.precio}</Text>
+                    <Text style={globalStyles.textp}>Precio a pagar: {habitacion.total}</Text>
 
                 </Body>
             </CardItem>
