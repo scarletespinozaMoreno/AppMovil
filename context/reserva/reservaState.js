@@ -10,6 +10,7 @@ import{
     ELIMINAR_PRODUCTO,
     PEDIDO_ORDENADO
 } from '../../types'
+//state donde codifico los metodos para la reserva
 
 const ReservaState = props =>
 {

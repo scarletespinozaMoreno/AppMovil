@@ -1,3 +1,4 @@
+//PANTALLA QUE MUESTRA LAS PROMOCIONES QUE LA HOSTERIA OFRECE
 import React, { useContext, useEffect, Fragment } from 'react';
 import { StyleSheet } from 'react-native';
 import FirebaseContext from '../context/firebase/firebaseContext'
@@ -78,8 +79,9 @@ const Promociones = () => {
                                         source={{ uri: Imagen }}
                                     />
                                     <Body>
-                                        <Text>{Titulo}</Text>
-                                        <Text
+                                        <Text styles= {styles.separadorTexto}>{Titulo}</Text>
+                                        <Text 
+                                             styles= {{fontFamily:'JosefinSans-Bold'}}
                                             note
                                             numberOfLines={10}
                                         >{Descripcion}</Text>

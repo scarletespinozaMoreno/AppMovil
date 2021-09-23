@@ -1,4 +1,5 @@
 import {StyleSheet } from 'react-native'
+//JS donde tengo estilos globales el cual usare en todo el proyecto!
 
 const globalStyles= StyleSheet.create({
     contenedor:{
@@ -21,7 +22,7 @@ const globalStyles= StyleSheet.create({
         textAlign:'center',
         marginTop: 40,
         marginBottom:20,
-        fontSize:30,
+        fontSize:25,
         fontFamily:'JosefinSans-Bold'
     },
     imagen:{

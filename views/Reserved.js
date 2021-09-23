@@ -1,4 +1,4 @@
-
+//PANTALLA PARA VER LAS RESERVAS ANTERIORES
 import React from 'react';
 import { Image } from 'react-native';
 import { withRouter } from 'react-router-dom';
@@ -27,7 +27,7 @@ const ReservaDisplay= ({ habitacion2 }) => {
 
                     <Text style={globalStyles.textp} >Desde: {desde}</Text>
                     <Text style={globalStyles.textp}>Hasta: {hasta}</Text>
-                    <Text style={globalStyles.textp}>Precio pagado: {habitacion2.precio}</Text>
+                    <Text style={globalStyles.textp}>Precio pagado: {habitacion2.total}</Text>
 
                 </Body>
             </CardItem>

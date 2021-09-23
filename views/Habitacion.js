@@ -1,3 +1,4 @@
+//PANTALLA EN LA CUAL OBTENGO TODAS LAS HABITACIONES DE LA HOSTERIA(FIREBASE)
 import React, { useContext, useEffect, Fragment } from 'react';
 import { StyleSheet } from 'react-native';
 import FirebaseContext from '../context/firebase/firebaseContext'

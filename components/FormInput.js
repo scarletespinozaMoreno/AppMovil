@@ -5,6 +5,8 @@ import { Icon } from 'react-native-elements'
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+//pantalla en la cual programo un input
+
 const FormInput = ({labelValue, placeholderText, iconType, ...rest}) => {
   return (
     <View style={styles.inputContainer}>

@@ -1,3 +1,4 @@
+//PANTALLA PARA VER LAS RESERVAS ACTUALES
 import React from 'react';
 import { Image } from 'react-native';
 import { withRouter } from 'react-router-dom';
@@ -30,7 +31,7 @@ const ReservaDisplay = ({ habitacion }) => {
 
                     <Text style={globalStyles.textp} >Desde: {desde}</Text>
                     <Text style={globalStyles.textp}>Hasta: {hasta}</Text>
-                    <Text style={globalStyles.textp}>Precio pagado: {habitacion.precio}</Text>
+                    <Text style={globalStyles.textp}>Precio a pagar: {habitacion.total}</Text>
 
                 </Body>
             </CardItem>

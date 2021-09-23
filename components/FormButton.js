@@ -11,7 +11,7 @@ const FormButton= ({buttonTitle,...rest}) =>{
 }
 
 export default FormButton;
-
+// pantalla en la cual programo un botton con sus estilos
 const styles = StyleSheet.create({
     buttonContainer: {
       marginTop: 10,

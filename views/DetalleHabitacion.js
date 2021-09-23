@@ -1,3 +1,4 @@
+//PANTALLA EN EL CUAL TENGO EL DETALLE DE LA HABITACION QUE ESCOJO
 import React, { useContext } from 'react';
 import { Image } from 'react-native';
 import ReservaContext from '../context/reserva/reservaContext'

@@ -1,4 +1,4 @@
-
+//PANTALLA EN EL CUAL ESTA PROGRAMADA A LO QUE EDITAR PERFIL SE REFIERE
 import React, { useEffect, useContext, useState } from 'react';
 import {
   View,
@@ -410,5 +410,6 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : -12,
     paddingLeft: 10,
     color: '#333333',
+    fontFamily:'JosefinSans-Bold'
   },
 });

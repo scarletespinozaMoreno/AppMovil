@@ -1,11 +1,14 @@
+//PANTALLA FINAL DE LA RESERVA
 import React,{useContext,useEffect,useState} from 'react';
 import {View,StyleSheet} from 'react-native';
 import { Container,Text,H1,H3,Button} from 'native-base';
 import globalStyles from '../styles/global'
 import { useNavigation,useTheme } from '@react-navigation/native'
+
 import ReservaContext from '../context/reserva/reservaContext'
 import firebase from '../firebase'
 import Countdown from 'react-countdown';
+import FormButton from '../components/FormButton';
 
 const ProgresoDeReserva = () =>{
 
@@ -29,19 +32,11 @@ const ProgresoDeReserva = () =>{
                         <>
                         <H1 style={styles.textoCompleadto}>Reserva Lista</H1>
                         <H3 style ={styles.textoCompleadto}>Le esperamos en el Hostal!</H3>
-                        <Button styles={[globalStyles.boton,{marginTop:100}]}
-                        rounded
-                        block
-                        onPress = {()=> 
-                            navigation.navigate("Habitacion")
-                        
-                        }
-                        >
-                            <Text
-                            style={globalStyles.botonTexto}>
-                                Comenzar Una Nueva Reserva
-                            </Text>
-                        </Button>
+                      
+
+                        <FormButton buttonTitle="Comenzar nueva reserva" onPress={()=> 
+                            navigation.navigate("Habitacion")} />
+                      
                         </>
 
                     
